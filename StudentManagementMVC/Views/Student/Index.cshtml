@@ -1,0 +1,51 @@
+﻿@model List<StudentManagementMVC.Models.Student>
+
+<h2>Student Management</h2>
+
+<a asp-controller="Student" asp-action="Create" class="btn btn-primary">
+    Add Student
+</a>
+
+<a asp-controller="Account" asp-action="Logout" class="btn btn-danger">
+    Logout
+</a>
+
+<br />
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Class</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.StudentId</td>
+                <td>@student.Name</td>
+                <td>@student.Age</td>
+                <td>@student.Class</td>
+                <td>@student.Email</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@student.StudentId">
+                        Edit
+                    </a>
+                    |
+                    <a asp-action="Delete"
+                       asp-route-id="@student.StudentId">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
